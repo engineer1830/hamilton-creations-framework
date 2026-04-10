@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Viewer</title>
+    <link rel="stylesheet" href="styles/content.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <button class="back-button" onclick="history.back()">← Back</button>
+        <h1 id="pageTitle">Loading...</h1>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <main class="content-area">
+            <article id="contentDisplay" class="markdown-body">
+                <!-- Markdown content will be injected here -->
+            </article>
+        </main>
+    </div>
+
+    <script src="scripts/content.js"></script>
+</body>
+
+</html>

@@ -1,1 +1,35 @@
-
+[
+    {
+        "title": "Sample Topic One",
+        "slug": "sample-topic-one",
+        "category": "General",
+        "keywords": [
+            "sample",
+            "demo",
+            "example"
+        ],
+        "contentPath": "content/example.md"
+    },
+    {
+        "title": "Understanding the Framework",
+        "slug": "understanding-the-framework",
+        "category": "Documentation",
+        "keywords": [
+            "framework",
+            "docs",
+            "guide"
+        ],
+        "contentPath": "content/example.md"
+    },
+    {
+        "title": "Getting Started",
+        "slug": "getting-started",
+        "category": "Documentation",
+        "keywords": [
+            "start",
+            "setup",
+            "intro"
+        ],
+        "contentPath": "content/example.md"
+    }
+]

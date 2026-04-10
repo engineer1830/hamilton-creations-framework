@@ -1,0 +1,1057 @@
+/* ============================================================
+   DESIGN SYSTEM — TOKENS
+============================================================ */
+
+:root
+{
+    /* Surfaces (warm neutral) */
+    --surface: #faf8f6;
+    --surface-alt: #f0ece9;
+    --surface-hover: #e8e3df;
+
+    /* Sidebar gradient (S3) */
+    --sidebar-bg: linear-gradient(180deg, #f0ece9 0%, #e8e3df 100%);
+
+    /* Borders */
+    --border-subtle: #e1dcd7;
+    --border: #d8d3cf;
+    --border-strong: #c7c2bd;
+
+    /* Text */
+    --text: #2d2a26;
+    --text-muted: #6a6560;
+    --text-soft: #8a847f;
+
+    /* Accent */
+    --accent: #1a73e8;
+    --accent-hover: #155fc2;
+
+    /* Shadows */
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-m: 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-l: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Radii */
+    --radius-s: 6px;
+    --radius-m: 8px;
+    --radius-l: 12px;
+
+    /* Typography scale */
+    --font-ui: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-reading: Georgia, "Times New Roman", serif;
+
+    --font-size-base: 16px;
+    --font-size-body: 1.06rem;
+    /* R2: slightly larger reading */
+    --font-size-small: 0.9rem;
+    --font-size-label: 0.85rem;
+    --font-size-h1: 2rem;
+    --font-size-h2: 1.5rem;
+    --font-size-h3: 1.25rem;
+
+    --line-height-body: 1.7;
+    --line-height-tight: 1.3;
+}
+
+body.dark
+{
+    --surface: #1b1b1b;
+    --surface-alt: #242424;
+    --surface-hover: #2b2b2b;
+
+    --sidebar-bg: linear-gradient(180deg, #1f1f1f 0%, #252525 100%);
+
+    --border-subtle: #333;
+    --border: #3d3d3d;
+    --border-strong: #4a4a4a;
+
+    --text: #e6e6e6;
+    --text-muted: #b5b5b5;
+    --text-soft: #9a9a9a;
+
+    --accent: #9bbcff;
+    --accent-hover: #c2d5ff;
+
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-m: 0 2px 6px rgba(0, 0, 0, 0.5);
+    --shadow-l: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html
+{
+    font-size: 100%;
+}
+
+body
+{
+    font-family: var(--font-ui);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--text);
+    background: var(--surface);
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+/* ============================================================
+   GLOBAL LINK SYSTEM
+============================================================ */
+
+a
+{
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        color 0.15s ease,
+        text-decoration-color 0.15s ease;
+}
+
+a:hover,
+a:focus
+{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    color: var(--accent-hover);
+}
+
+body.dark a
+{
+    color: var(--accent);
+}
+
+body.dark a:hover,
+body.dark a:focus
+{
+    color: #ffffff;
+}
+
+/* Prevent underline on card hover */
+.card:hover a,
+.card a:hover
+{
+    text-decoration: none !important;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.top-header
+{
+    padding: 0.75rem 1rem;
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.top-header .home-link
+{
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--accent);
+}
+
+/* Dark mode header */
+body.dark .top-header
+{
+    background: var(--surface-alt);
+    border-bottom-color: var(--border);
+}
+
+/* ============================================================
+   DARK MODE TOGGLE
+============================================================ */
+
+.dark-toggle
+{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1000;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.dark-toggle input
+{
+    transform: scale(1.3);
+}
+
+/* ============================================================
+   LAYOUT — HOMEPAGE & WRITING PAGE
+============================================================ */
+
+/* Homepage layout: sidebar + content */
+body.homepage .layout
+{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    background: var(--surface);
+}
+
+/* Writing page layout: sidebar + content */
+.writing-layout
+{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    background: var(--surface);
+}
+
+/* Homepage content spacing */
+body.homepage .content
+{
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+
+/* Non-writing pages (general) */
+body:not(.writing-page) .content
+{
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+
+/* Writing page content: centered reading card */
+body.writing-page .content
+{
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: transparent;
+}
+
+/* ============================================================
+   SIDEBAR — BASE (DESKTOP) + MOBILE
+============================================================ */
+
+.sidebar
+{
+    width: 280px;
+    background: var(--sidebar-bg);
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    transition:
+        transform 0.35s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.sidebar
+{
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Category header base */
+.nav-category
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.1rem 0.4rem;
+    /* final padding */
+    border-radius: var(--radius-s);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Hover state */
+.nav-category:hover
+{
+    background: var(--surface-hover);
+    color: var(--text-strong);
+}
+
+body.dark .sidebar
+{
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.35);
+}
+
+.nav-section
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    margin-bottom: 0.1rem;
+}
+
+/* Base: lists start collapsed */
+#sidebarNav ul
+{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+}
+
+/* Expanded state */
+#sidebarNav ul:not(.collapsed)
+{
+    max-height: 500px;
+}
+
+/* Fade + slide animation for list items */
+.nav-section ul li
+{
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+        opacity 0.25s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* When the list is open */
+.nav-section ul:not(.collapsed) li
+{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth collapse fade-out */
+.nav-section ul.collapsed li
+{
+    opacity: 0;
+    transform: translateY(4px);
+}
+
+/* Optional: stagger effect */
+.nav-section ul:not(.collapsed) li:nth-child(1) {transition-delay: 0.02s;}
+.nav-section ul:not(.collapsed) li:nth-child(2){transition-delay: 0.04s;}
+.nav-section ul:not(.collapsed) li:nth-child(3) {transition-delay: 0.06s;}
+.nav-section ul:not(.collapsed) li:nth-child(4) {transition-delay: 0.08s;}
+.nav-section ul:not(.collapsed) li:nth-child(5) {transition-delay: 0.10s;}
+
+/* ⭐ Micro-delay before items animate */
+.nav-section ul:not(.collapsed)
+{
+    transition-delay: 0.04s;
+}
+
+/* Smooth list expansion */
+.nav-section ul
+{
+    transition: max-height 0.35s ease;
+}
+
+/* Sidebar toggle (mobile/iPad) */
+.sidebar-toggle
+{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2000;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-s);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* Chevron pseudo-element */
+.nav-category::after
+{
+    content: "▸";
+    font-size: 0.9rem;
+    transition: transform 0.25s ease;
+    opacity: 0.7;
+}
+
+/* Rotate when open */
+.nav-category.open::after
+{
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+body.dark .sidebar-toggle
+{
+    background: var(--surface-alt);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.dark .nav-category:hover
+{
+    background: var(--surface-alt);
+    color: var(--text);
+}
+
+body.dark .nav-category::after
+{
+    opacity: 0.8;
+}
+/* Active page link */
+.sidebar a.active
+{
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.sidebar a.active
+{
+    background: var(--surface-hover);
+    border-radius: var(--radius-s);
+    padding: 0.15rem 0.25rem;
+}
+
+/* Mobile / tablet: slide-in from right */
+@media (max-width: 1024px)
+{
+    .sidebar
+    {
+        position: fixed;
+        right: 0;
+        left: auto;
+        top: 0;
+        transform: translateX(100%);
+        height: 100vh;
+        z-index: 1600;
+    }
+
+    .sidebar.open
+    {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle
+    {
+        display: block;
+    }
+
+    body.homepage .layout,
+    .writing-layout
+    {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Overlay behind sidebar */
+#sidebarOverlay
+{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+    z-index: 1500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#sidebarOverlay.visible
+{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ============================================================
+   SIDEBAR CONTENT
+============================================================ */
+
+.sidebar-header
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-header h1,
+.sidebar-header h2
+{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-header input[type="search"]
+{
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    background: #ffffff;
+    color: var(--text);
+}
+
+body.dark .sidebar-header input[type="search"]
+{
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+/* Collapse all button */
+.collapse-all
+{
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    font-size: var(--font-size-label);
+    border-radius: var(--radius-s);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+body.dark .collapse-all
+{
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+/* Category headers */
+.nav-category
+{
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Chevron */
+.nav-category::after
+{
+    content: "›";
+    font-size: 0.9rem;
+    transition: transform 0.25s ease;
+}
+
+.nav-category.open::after
+{
+    transform: rotate(90deg);
+}
+
+/* Topic links */
+.sidebar-nav a
+{
+    display: block;
+    padding: 0.4rem 0.5rem;
+    margin-left: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-radius: 4px;
+    transition:
+        background 0.15s ease,
+        border-left 0.15s ease,
+        color 0.15s ease;
+}
+
+/* Hover */
+.sidebar-nav a:hover
+{
+    background: var(--surface-hover);
+    border-left: 3px solid var(--accent);
+    padding-left: calc(0.5rem - 3px);
+    color: var(--text);
+}
+
+/* Active link */
+.sidebar-nav a.active
+{
+    background: var(--surface-hover);
+    border-left: 3px solid var(--accent);
+    padding-left: calc(0.5rem - 3px);
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Collapse animation */
+.sidebar-nav ul
+{
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.sidebar-nav ul.collapsed
+{
+    max-height: 0;
+}
+
+/* ============================================================
+   HOMEPAGE — CARD GRID
+============================================================ */
+
+.card-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.card
+{
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-m);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-s);
+    transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.card:hover
+{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-l);
+    border-color: var(--border);
+    background: var(--surface);
+}
+
+body.dark .card
+{
+    background: var(--surface-alt);
+    border-color: var(--border);
+    box-shadow: var(--shadow-s);
+}
+
+.card h3
+{
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.card .category
+{
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    margin-bottom: 0.25rem;
+}
+
+.card .keywords
+{
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    margin-bottom: 0.75rem;
+}
+
+.card .read-link
+{
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+
+#pagination
+{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#pagination button
+{
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#pagination button:hover
+{
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+}
+
+#pagination button.active
+{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+    transform: translateY(-2px);
+}
+
+body.dark #pagination button
+{
+    background: var(--surface-alt);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.dark #pagination button.active
+{
+    background: var(--accent);
+    color: #222;
+}
+
+/* ============================================================
+   WRITING PAGE — READING CARD
+============================================================ */
+
+body.writing-page
+{
+    background: var(--surface-alt);
+}
+
+body.writing-page .writing-layout
+{
+    background: transparent;
+}
+
+#readingCard
+{
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 2.25rem 2.5rem;
+    background: #ffffff;
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-l);
+}
+
+body.dark.writing-page #readingCard
+{
+    background: var(--surface-alt);
+    box-shadow: var(--shadow-m);
+}
+
+/* ============================================================
+   WRITING PAGE — TYPOGRAPHY
+============================================================ */
+
+#markdownContent
+{
+    font-family: var(--font-reading);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+    color: var(--text);
+}
+
+/* Headings */
+#markdownContent h1
+{
+    font-size: var(--font-size-h1);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+}
+
+#markdownContent h2
+{
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    color: var(--text);
+}
+
+#markdownContent h3
+{
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Paragraphs */
+#markdownContent p
+{
+    margin: 1.25rem 0;
+    color: var(--text);
+}
+
+/* Lists */
+#markdownContent ul,
+#markdownContent ol
+{
+    margin: 1.25rem 0 1.25rem 1.5rem;
+    line-height: 1.6;
+}
+
+#markdownContent li
+{
+    margin: 0.5rem 0;
+    color: var(--text);
+}
+
+/* Blockquotes */
+#markdownContent blockquote
+{
+    margin: 1.75rem 0;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid var(--accent);
+    background: var(--surface-alt);
+    border-radius: var(--radius-s);
+    color: var(--text);
+}
+
+/* Images */
+#markdownContent img
+{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-m);
+}
+
+/* Links inside content */
+#markdownContent a
+{
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 115, 232, 0.3);
+    transition: border-color 0.2s ease;
+}
+
+#markdownContent a:hover
+{
+    border-bottom-color: rgba(26, 115, 232, 0.8);
+}
+
+/* Dark mode content */
+body.dark #markdownContent h1,
+body.dark #markdownContent h2,
+body.dark #markdownContent h3,
+body.dark #markdownContent p,
+body.dark #markdownContent li
+{
+    color: var(--text);
+}
+
+body.dark #markdownContent blockquote
+{
+    background: #1f2633;
+    border-left: 4px solid var(--accent);
+    color: var(--text);
+}
+
+body.dark #markdownContent a
+{
+    color: var(--accent);
+    border-bottom: 1px solid rgba(155, 188, 255, 0.4);
+}
+
+body.dark #markdownContent a:hover
+{
+    border-bottom-color: rgba(155, 188, 255, 0.9);
+}
+
+/* ============================================================
+   WRITING PAGE — VERTICAL RHYTHM
+============================================================ */
+
+body.writing-page #markdownContent h1
+{
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+body.writing-page #markdownContent .subtitle
+{
+    margin-top: -0.5rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.75;
+}
+
+body.writing-page #markdownContent p:first-of-type
+{
+    margin-top: 0.5rem;
+}
+
+body.writing-page #markdownContent p
+{
+    margin-bottom: 1rem;
+}
+
+body.writing-page #markdownContent h2
+{
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+body.writing-page #markdownContent h3
+{
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+body.writing-page #markdownContent ul,
+body.writing-page #markdownContent ol
+{
+    margin: 1rem 0;
+}
+
+body.writing-page #markdownContent li
+{
+    margin-bottom: 0.5rem;
+}
+
+body.writing-page #markdownContent
+{
+    margin-bottom: 2rem;
+}
+
+/* ============================================================
+   RELATED WRITINGS (INSIDE CARD)
+============================================================ */
+
+.related
+{
+    margin-top: 1.5rem;
+    color: var(--text);
+}
+
+.related h2
+{
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.related ul
+{
+    list-style: none;
+    padding-left: 0;
+}
+
+.related li
+{
+    margin-bottom: 0.5rem;
+}
+
+.related a
+{
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+body.writing-page #readingCard .related
+{
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.dark.writing-page #readingCard .related
+{
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ============================================================
+   DARK MODE — HOMEPAGE & WRITING PAGE
+============================================================ */
+
+body.dark.homepage .layout
+{
+    background: var(--surface);
+}
+
+body.dark.writing-page
+{
+    background: #121212;
+}
+
+body.dark.writing-page .writing-layout
+{
+    background: transparent;
+}
+
+/* Header + sidebar dark specifics for writing page */
+body.dark.writing-page .top-header
+{
+    background: #222;
+}
+
+body.dark.writing-page .sidebar
+{
+    background: linear-gradient(180deg, #1b1b1b 0%, #222 100%);
+}
+
+/* ============================================================
+   SMALL RESPONSIVE TWEAKS
+============================================================ */
+
+@media (max-width: 768px)
+{
+
+    body.homepage .content,
+    body:not(.writing-page) .content
+    {
+        padding: 1.5rem 1.25rem;
+    }
+
+    body.writing-page .content
+    {
+        padding: 2rem 1.25rem;
+    }
+
+    #readingCard
+    {
+        padding: 1.75rem 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .card-grid
+    {
+        margin-top: 2rem;
+        gap: 1.25rem;
+    }
+}
