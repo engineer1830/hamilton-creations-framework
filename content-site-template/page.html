@@ -5,26 +5,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Viewer</title>
+
+    <!-- Design System + Layout -->
     <link rel="stylesheet" href="styles/content.css" />
 </head>
 
-<body>
+<body class="content-page">
 
+    <!-- Dark Mode Toggle -->
+    <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle" />
+        <span>Dark Mode</span>
+    </label>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+
+    <!-- Header -->
     <header class="site-header">
         <button class="back-button" onclick="history.back()">← Back</button>
         <h1 id="pageTitle">Loading...</h1>
     </header>
 
+    <!-- Layout Grid -->
     <div class="layout">
-        <aside class="sidebar" id="sidebar"></aside>
 
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="navSidebar"></aside>
+
+        <!-- Main Content Area -->
         <main class="content-area">
-            <article id="contentDisplay" class="markdown-body">
-                <!-- Markdown content will be injected here -->
-            </article>
+
+            <!-- Reading Card Wrapper -->
+            <div id="contentCard">
+
+                <!-- Markdown Content -->
+                <article id="contentDisplay">
+                    <!-- Markdown will be injected here -->
+                </article>
+
+                <!-- Related Items -->
+                <section class="related" id="relatedItems">
+                    <!-- Related items will be injected here -->
+                </section>
+
+            </div>
         </main>
     </div>
 
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebarOverlay"></div>
+
+    <!-- Framework Engine -->
     <script src="scripts/content.js"></script>
 </body>
 

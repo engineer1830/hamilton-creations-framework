@@ -430,11 +430,7 @@ function markdownToHtml(md) {
 
     function applyInlineFormatting(text) {
         // Images
-        text = text.replace(/!
-
-            \[(.*?) \]
-
-            \((.*?) \) / g, '<img src="$2" alt="$1">');
+        text = text.replace(/!\[(.*?) \]\((.*?) \)/g, '<img src="$2" alt="$1">');
 
         // Auto-link URLs
         text = text.replace(

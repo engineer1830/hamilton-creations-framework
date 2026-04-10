@@ -1,1 +1,429 @@
+/* ============================================================
+   DESIGN SYSTEM — TOKENS
+============================================================ */
+
+:root
+{
+    /* Surfaces (warm neutral) */
+    --surface: #faf8f6;
+    --surface-alt: #f0ece9;
+    --surface-hover: #e8e3df;
+
+    /* Sidebar gradient */
+    --sidebar-bg: linear-gradient(180deg, #f0ece9 0%, #e8e3df 100%);
+
+    /* Borders */
+    --border-subtle: #e1dcd7;
+    --border: #d8d3cf;
+    --border-strong: #c7c2bd;
+
+    /* Text */
+    --text: #2d2a26;
+    --text-muted: #6a6560;
+    --text-soft: #8a847f;
+
+    /* Accent */
+    --accent: #1a73e8;
+    --accent-hover: #155fc2;
+
+    /* Shadows */
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-m: 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-l: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    /* Radii */
+    --radius-s: 6px;
+    --radius-m: 8px;
+    --radius-l: 12px;
+
+    /* Typography */
+    --font-ui: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-reading: Georgia, "Times New Roman", serif;
+
+    --font-size-base: 16px;
+    --font-size-body: 1.06rem;
+    --font-size-small: 0.9rem;
+    --font-size-label: 0.85rem;
+    --font-size-h1: 2rem;
+    --font-size-h2: 1.5rem;
+    --font-size-h3: 1.25rem;
+
+    --line-height-body: 1.7;
+    --line-height-tight: 1.3;
+}
+
+body.dark
+{
+    --surface: #1b1b1b;
+    --surface-alt: #242424;
+    --surface-hover: #2b2b2b;
+
+    --sidebar-bg: linear-gradient(180deg, #1f1f1f 0%, #252525 100%);
+
+    --border-subtle: #333;
+    --border: #3d3d3d;
+    --border-strong: #4a4a4a;
+
+    --text: #e6e6e6;
+    --text-muted: #b5b5b5;
+    --text-soft: #9a9a9a;
+
+    --accent: #9bbcff;
+    --accent-hover: #c2d5ff;
+
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-m: 0 2px 6px rgba(0, 0, 0, 0.5);
+    --shadow-l: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html
+{
+    font-size: 100%;
+}
+
+body
+{
+    font-family: var(--font-ui);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    color: var(--text);
+    background: var(--surface);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   GLOBAL LINK SYSTEM
+============================================================ */
+
+a
+{
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover,
+a:focus
+{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    color: var(--accent-hover);
+}
+
+body.dark a
+{
+    color: var(--accent);
+}
+
+body.dark a:hover,
+body.dark a:focus
+{
+    color: #ffffff;
+}
+
+/* Prevent underline on card hover */
+.card:hover a,
+.card a:hover
+{
+    text-decoration: none !important;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.site-header
+{
+    padding: 1rem 1.5rem;
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header h1
+{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.site-header input[type="text"]
+{
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-s);
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    width: 260px;
+}
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+
+.layout
+{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+}
+
+@media (max-width: 1024px)
+{
+    .layout
+    {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   SIDEBAR — navSidebar
+============================================================ */
+
+.sidebar
+{
+    width: 280px;
+    background: var(--sidebar-bg);
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    transition: transform 0.35s ease;
+}
+
+/* Mobile slide-in */
+@media (max-width: 1024px)
+{
+    .sidebar
+    {
+        position: fixed;
+        right: 0;
+        transform: translateX(100%);
+        z-index: 1600;
+    }
+
+    .sidebar.open
+    {
+        transform: translateX(0);
+    }
+}
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+============================================================ */
+
+#navSidebar ul
+{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+}
+
+#navSidebar ul:not(.collapsed)
+{
+    max-height: 500px;
+}
+
+.nav-category
+{
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    border-radius: var(--radius-s);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-category:hover
+{
+    background: var(--surface-hover);
+}
+
+.nav-category::after
+{
+    content: "›";
+    transition: transform 0.25s ease;
+}
+
+.nav-category.open::after
+{
+    transform: rotate(90deg);
+}
+
+#navSidebar a
+{
+    display: block;
+    padding: 0.4rem 0.5rem;
+    margin-left: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-radius: 4px;
+}
+
+#navSidebar a:hover
+{
+    background: var(--surface-hover);
+    border-left: 3px solid var(--accent);
+    padding-left: calc(0.5rem - 3px);
+}
+
+#navSidebar a.active
+{
+    background: var(--surface-hover);
+    border-left: 3px solid var(--accent);
+    padding-left: calc(0.5rem - 3px);
+    font-weight: 600;
+}
+
+/* ============================================================
+   CARD GRID
+============================================================ */
+
+.card-grid,
+#cardContainer
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.card
+{
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-m);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-s);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover
+{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-l);
+}
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+
+#pagination
+{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#pagination button
+{
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+}
+
+#pagination button.active
+{
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+/* ============================================================
+   CONTENT PAGE
+============================================================ */
+
+body.content-page
+{
+    background: var(--surface-alt);
+}
+
+#contentCard
+{
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 2.25rem 2.5rem;
+    background: #ffffff;
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-l);
+}
+
+/* ============================================================
+   CONTENT DISPLAY
+============================================================ */
+
+#contentDisplay
+{
+    font-family: var(--font-reading);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+}
+
+#contentDisplay h1
+{
+    font-size: var(--font-size-h1);
+    margin-bottom: 1.25rem;
+}
+
+#contentDisplay h2
+{
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: var(--font-size-h2);
+}
+
+#contentDisplay h3
+{
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--font-size-h3);
+}
+
+#contentDisplay p
+{
+    margin: 1.25rem 0;
+}
+
+#contentDisplay ul,
+#contentDisplay ol
+{
+    margin: 1.25rem 0 1.25rem 1.5rem;
+}
+
+#contentDisplay blockquote
+{
+    margin: 1.75rem 0;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid var(--accent);
+    background: var(--surface-alt);
+    border-radius: var(--radius-s);
+}
 

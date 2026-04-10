@@ -5,25 +5,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Library</title>
+
+    <!-- Design System + Layout -->
     <link rel="stylesheet" href="styles/content.css" />
 </head>
 
-<body>
+<body class="homepage">
 
+    <!-- Dark Mode Toggle -->
+    <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle" />
+        <span>Dark Mode</span>
+    </label>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+
+    <!-- Header -->
     <header class="site-header">
         <h1>Content Library</h1>
-        <input id="searchInput" type="text" placeholder="Search topics..." />
+        <input id="searchInput" type="text" placeholder="Search topics..." aria-label="Search all content" />
     </header>
 
+    <!-- Layout Grid -->
     <div class="layout">
-        <aside class="sidebar" id="sidebar"></aside>
 
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="navSidebar"></aside>
+
+        <!-- Main Content -->
         <main class="content-area">
             <h2>All Topics</h2>
+
+            <!-- Card Grid -->
             <div id="cardContainer" class="card-grid"></div>
+
+            <!-- Pagination -->
+            <div id="pagination"></div>
         </main>
     </div>
 
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebarOverlay"></div>
+
+    <!-- Framework Engine -->
     <script src="scripts/content.js"></script>
 </body>
 
